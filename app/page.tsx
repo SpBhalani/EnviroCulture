@@ -120,7 +120,7 @@ export default function Home() {
               </span>
             </div>
             <p className="text-center">
-              You don't need to worry about any significant or organic pollutants coming in the way of the environmental compliance of your business. We have a dedicated team to take care of such worries.
+              You don&apos;t need to worry about any significant or organic pollutants coming in the way of the environmental compliance of your business. We have a dedicated team to take care of such worries.
             </p>
           </div>
           <div onClick={() => router.push('/services/eia-studies')} className="w-full md:basis-[30%] shadow-lg group hover:shadow-xl m-5 flex flex-col items-center space-y-2 p-6 hover:cursor-pointer">
@@ -396,7 +396,7 @@ export default function Home() {
               <div className="w-full h-full bg-[#23ae51] -z-10 top-0 left-0 absolute rounded-bl-3xl rounded-tr-3xl"></div>
               <Image src={'/quotes-icon.png'} alt='quotes Icon' width={40} height={50} />
               <p className="text-sm md:text-base">
-                I received full support to implement of Effluent Treatment Scheme and project consulting of streamline. I was greatly impressed with the team's efficient, friendly and informative approach.              </p>
+                I received full support to implement of Effluent Treatment Scheme and project consulting of streamline. I was greatly impressed with the team&apos;s efficient, friendly and informative approach.              </p>
               <p className="text-right font-semibold">- Mr. Rajesh Patel</p>
               <p className="text-right text-xs font-thin">EHS Head - Chemie Synth Group</p>
             </div>
