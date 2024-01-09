@@ -25,6 +25,7 @@ export default function Clients() {
     <img key='20' src={'/clients/image21.png'} alt="Our Clients Logo" className="w-40 p-3 md:w-80 md:p-6"/>,
     <img key='21' src={'/clients/image22.png'} alt="Our Clients Logo" className="w-40 p-3 md:w-80 md:p-6"/>,
     <img key='22' src={'/clients/image23.png'} alt="Our Clients Logo" className="w-40 p-3 md:w-80 md:p-6"/>,
+    <img key='223' src={'/clients/image24.svg'} alt="Our Clients Logo" className="w-40 p-3 md:w-80 md:p-6"/>,
   ];
   return (
     <div id="infrastructure" className="">

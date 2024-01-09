@@ -24,6 +24,7 @@ const LOGOS = [
   <Image key='20' src={'/clients/image21.png'} alt="Client Logo" height={100} width={100}/>,
   <Image key='21' src={'/clients/image22.png'} alt="Client Logo" height={100} width={100}/>,
   <Image key='22' src={'/clients/image23.png'} alt="Client Logo" height={100} width={100}/>,
+  <Image key='23' src={'/clients/image24.svg'} alt="Client Logo" height={100} width={100}/>,
 ];
 const ClientCarousel = () => {
 

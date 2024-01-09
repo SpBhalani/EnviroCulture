@@ -68,7 +68,7 @@ export default function AboutUs() {
       </div>
       <div>
         {
-          certyNumber === 0
+          certyNumber === 1
             ?
             <div>
               <img src={'/certificates/NABL.png'} className="w-[70%] md:w-[30%] mx-auto my-10" alt="NABL Certificate"/>
@@ -77,7 +77,7 @@ export default function AboutUs() {
             <></>
         }
         {
-          certyNumber === 1
+          certyNumber === 0
             ?
             <div className="md:flex md:justify-evenly">
               <img src={'/certificates/GPCB1.png'} className="w-[70%] md:w-[30%] mx-auto md:mx-0 my-10" alt="GPCB Certificate"/>
