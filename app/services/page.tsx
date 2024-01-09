@@ -91,7 +91,7 @@ export default function Services() {
               </span>
             </div>
             <p className="text-center">
-              You don't need to worry about any significant or organic pollutants coming in the way of the environmental compliance of your business. We have a dedicated team to take care of such worries.
+              You don&apos;t need to worry about any significant or organic pollutants coming in the way of the environmental compliance of your business. We have a dedicated team to take care of such worries.
             </p>
           </div>
           <div onClick={() => router.push('/services/eia-studies')} className="w-full md:basis-[30%] shadow-lg group hover:shadow-xl m-5 flex flex-col items-center space-y-2 p-6 hover:cursor-pointer">

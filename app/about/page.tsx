@@ -27,7 +27,7 @@ export default function AboutUs() {
           </p>
           <br />
           <p>
-            We accept the client's challenges and help them to better services. We build the modern India with better environment to next generation.
+            We accept the client&apos;s challenges and help them to better services. We build the modern India with better environment to next generation.
           </p>
         </div>
       </div>

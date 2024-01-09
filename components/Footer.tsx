@@ -49,7 +49,7 @@ const Footer = () => {
                             </span>
                             <span>
                                 <span className='font-semibold'>Corporate Office & Lab: </span><br />
-                                342 & 234, "Polaris", Opp. Bhaiya Nagar
+                                342 & 234, &quot;Polaris&quot;, Opp. Bhaiya Nagar
                                 BRTS, Parvat Patiya Canal Road,
                                 Puna Gam, Surat - 395010
                             </span>

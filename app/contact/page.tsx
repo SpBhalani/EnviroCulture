@@ -194,7 +194,7 @@ export default function ContactUs
         </div>
         <div className="basis-[30%]">
           <img src={'/location.svg'} alt="Location Icon" className="mx-auto mb-3" />
-          <p className="text-center font-bold"> 342 & 234, "Polaris", Opp. Bhaiya Nagar
+          <p className="text-center font-bold"> 342 & 234, &quot;Polaris&quot;, Opp. Bhaiya Nagar
             BRTS, Parvat Patiya Canal Road,
             Puna Gam, Surat - 395010</p>
         </div>

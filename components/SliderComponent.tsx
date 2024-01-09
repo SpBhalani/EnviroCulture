@@ -48,7 +48,7 @@ const SliderComponent = () => {
             </div>
             <div className={`${styles.textOverlay}  ${sliderIndex === 2 ? 'block' : 'hidden'} animate-slider-text md:text-7xl font-extrabold leading-normal whitespace-pre-wrap p-4 md:p-16`}>
               <p>
-                It's not just you who depends on the  environment;  <span className=' bg-gradient-to-b from-transparent via-transparent to-yellow-500'>think about animals</span> ,birds and  <span className='bg-gradient-to-b from-transparent via-transparent to-blue-500'>aqua life</span>
+                It is not just you who depends on the  environment;  <span className=' bg-gradient-to-b from-transparent via-transparent to-yellow-500'>think about animals</span> ,birds and  <span className='bg-gradient-to-b from-transparent via-transparent to-blue-500'>aqua life</span>
               </p>
               {button}
             </div>

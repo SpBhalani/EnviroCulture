@@ -29,7 +29,7 @@ export default function StatutoryApprovals() {
         </div>
         <div className="font-lato my-8">
         <p className="text-2xl font-bold">CGWA (Central Ground Water Authority)</p>
-        <p className=" text-gray-600">As per Honab'le NGT has been constituted of the Environment Act 1986 to get prior permission for extract ground water.</p>
+        <p className=" text-gray-600">As per Honab&apos;le NGT has been constituted of the Environment Act 1986 to get prior permission for extract ground water.</p>
         </div>
         <div className="font-lato my-8">
         <p className="text-2xl font-bold">Form IV, V, Environmental compliance report:</p>

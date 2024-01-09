@@ -3,25 +3,7 @@ import { useState } from "react";
 
 const InfraGallary = () => {
     const [lab, setLab] = useState(true)
-    const Labs = [
-        <img src={'/infrastructure/lab1.jpeg'} alt="Lab" height={100} width={100} />,
-        <img src={'/infrastructure/lab2.jpeg'} alt="Lab" height={100} width={100} />,
-        <img src={'/infrastructure/lab3.jpeg'} alt="Lab" height={100} width={100} />,
-        <img src={'/infrastructure/lab4.jpeg'} alt="Lab" height={100} width={100} />,
-        <img src={'/infrastructure/lab5.jpeg'} alt="Lab" height={100} width={100} />,
-        <img src={'/infrastructure/lab6.jpeg'} alt="Lab" height={100} width={100} />,
-        <img src={'/infrastructure/lab7.jpeg'} alt="Lab" height={100} width={100} />,
-        <img src={'/infrastructure/lab8.jpeg'} alt="Lab" height={100} width={100} />,
-        <img src={'/infrastructure/lab9.jpeg'} alt="Lab" height={100} width={100} />,
-    ];
-    const Office = [
-        <img src={'/infrastructure/office1.jpeg'} alt="Office" height={100} width={100} />,
-        <img src={'/infrastructure/office2.jpeg'} alt="Office" height={100} width={100} />,
-        // <img src={'/infrastructure/office3.jpeg'} alt="Office" height={100} width={100} />,
-        <img src={'/infrastructure/office4.jpeg'} alt="Office" height={100} width={100} />,
-        <img src={'/infrastructure/office5.jpeg'} alt="Office" height={100} width={100} />,
-        <img src={'/infrastructure/office6.jpeg'} alt="Office" height={100} width={100} />,
-    ]
+
     return (
         <div>
             <div className="flex justify-center mx-2">
