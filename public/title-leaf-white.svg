@@ -1,0 +1,24 @@
+<svg width="42" height="22" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <clipPath id="clip-title-leaf">
+   <rect id="svg_1" height="22" width="42"/>
+  </clipPath>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g clip-path="url(#clip-title-leaf)" id="title-leaf">
+   <g id="Group_5294">
+    <g id="Group_5081">
+     <path fill="#ffffff" d="m23.338026,19.534984c11.579,0 12.464,-6.55 18.662,-12.7a12.638,12.638 0 0 0 -6.47,-1.553c-4.087,0 -16.176,2.735 -16.176,14.113a7.937,7.937 0 0 0 0.34,2.6s3.887,-6.295 10.618,-8.186c-0.004,0.006 -4.749,2.864 -6.974,5.726z" id="Path_11449"/>
+    </g>
+    <g id="Group_5082">
+     <path fill="#ffffff" d="m14.402998,10.99603c-8.936,0 -9.619,-5.055 -14.4,-9.8a9.753,9.753 0 0 1 4.994,-1.2c3.154,0 12.484,2.11 12.484,10.892a6.127,6.127 0 0 1 -0.263,2.006s-3,-4.858 -8.195,-6.317a23.984,23.984 0 0 1 5.38,4.419z" id="Path_11450"/>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

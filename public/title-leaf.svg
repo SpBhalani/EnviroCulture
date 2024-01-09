@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="22" viewBox="0 0 42 22">
+  <defs>
+    <clipPath id="clip-title-leaf">
+      <rect width="42" height="22"/>
+    </clipPath>
+  </defs>
+  <g id="title-leaf" clip-path="url(#clip-title-leaf)">
+    <g id="Group_5294" data-name="Group 5294" transform="translate(-288.214 -1059.171)">
+      <g id="Group_5081" data-name="Group 5081" transform="translate(307.558 1064.458)">
+        <path id="Path_11449" data-name="Path 11449" d="M200.33-536.924c11.579,0,12.464-6.55,18.662-12.7a12.638,12.638,0,0,0-6.47-1.553c-4.087,0-16.176,2.735-16.176,14.113a7.937,7.937,0,0,0,.34,2.6s3.887-6.295,10.618-8.186C207.3-542.644,202.555-539.786,200.33-536.924Z" transform="translate(-196.336 551.172)" fill="#23ae51"/>
+      </g>
+      <g id="Group_5082" data-name="Group 5082" transform="translate(288.214 1059.171)">
+        <path id="Path_11450" data-name="Path 11450" d="M145.455-558.172c-8.936,0-9.619-5.055-14.4-9.8a9.753,9.753,0,0,1,4.994-1.2c3.154,0,12.484,2.11,12.484,10.892a6.127,6.127,0,0,1-.263,2.006s-3-4.858-8.195-6.317A23.984,23.984,0,0,1,145.455-558.172Z" transform="translate(-131.052 569.168)" fill="#23ae51"/>
+      </g>
+    </g>
+  </g>
+</svg>
