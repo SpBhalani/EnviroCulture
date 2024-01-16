@@ -1,5 +1,4 @@
 "use client"
-import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -7,10 +6,6 @@ export default function Services() {
   const router = useRouter()
   return (
     <div>
-      <Head>
-        <title>Enviro Culture | Services</title>
-        <meta name="description" content="Know more about the Services to get rid of your problem regarding pollution management."></meta>
-      </Head>
       <div className="bg-cover bg-center py-40 relative after:bg-[#1111114d] before:bg-opacity-50" style={{ backgroundImage: `url("/service-banner.png")` }}>
         {/* <div className="bg-cover bg-center absolute top-0 left-0 z-10" style={{ backgroundImage: `url("/banner-overlay.png")` }}></div> */}
         <div className='absolute top-0 left-0 right-0 bottom-0 w-[100%] h-[100%] animate-service-banner bg-no-repeat bg-center' style={{ backgroundImage: `url("/banner-overlay.png")` }} > </div>
@@ -119,6 +114,27 @@ export default function Services() {
             </div>
             <p className="text-center">
               We are made up of scrubber design for HCL,CL2, HBR, Br2 , SO2 and we are giving recommendation/ Solution for the scrubber designing.
+            </p>
+          </div>
+          <div onClick={() => router.push('/services/certified-industrial-hygiene-safety')} className="w-full md:basis-[30%] shadow-lg group hover:shadow-xl m-5 flex flex-col items-center space-y-2 p-6 hover:cursor-pointer">
+            <Image className="invert-[20%] group-hover:invert-0" src={'/cihs.svg'} alt="ic_scrubber_designing_and_solution" height={100} width={100} />
+            <div className="text-center text-2xl font-semibold group-hover:text-[#23ae51]">
+            Certified Industrial Hygiene and safety
+            </div>
+            <p className="text-center">
+Industrial hygiene has been defined as “that science and art devoted to the anticipation, recognition, evaluation, and control of those environmental factors or stresses arising in or from the workplace, which may cause sickness, impaired health and well-being, or significant discomfort among workers"
+            </p>
+          </div>
+          <div onClick={() => router.push('/services/epr')} className="w-full md:basis-[30%] shadow-lg group hover:shadow-xl m-5 flex flex-col items-center space-y-2 p-6 hover:cursor-pointer">
+            <Image className="invert-[20%] group-hover:invert-0" src={'/epr.svg'} alt="ic_scrubber_designing_and_solution" height={100} width={100} />
+            <div className="text-center text-2xl font-semibold group-hover:text-[#23ae51]">
+              EPR <br/>
+              <span className="text-sm -mt-3">
+              Extended Producer Responsibility
+              </span>
+            </div>
+            <p className="text-center">
+            The responsibility of the Producer/Brand Owner/Importer is to ensure the processing of plastic waste generated due to plastic packaging of products introduced by them in the market. We provide sollution for EPR.
             </p>
           </div>
         </div>

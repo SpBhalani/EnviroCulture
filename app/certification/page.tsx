@@ -1,5 +1,4 @@
 "use client"
-import Head from "next/head";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -15,10 +14,6 @@ export default function AboutUs() {
   }, [])
   return (
     <div>
-      <Head>
-        <title>Enviro Culture | Certificates</title>
-        <meta name="description" content="Know more about the achivements and certificats earned by team Enviro Culture."></meta>
-      </Head>
       <div className="bg-cover bg-center py-40 relative after:bg-[#1111114d] before:bg-opacity-50" style={{ backgroundImage: `url("/about-banner.jpg")` }}>
         {/* <div className="bg-cover bg-center absolute top-0 left-0 z-10" style={{ backgroundImage: `url("/banner-overlay.png")` }}></div> */}
         <div className='absolute top-0 left-0 right-0 bottom-0 w-[100%] h-[100%] animate-service-banner bg-no-repeat bg-center' style={{ backgroundImage: `url("/banner-overlay.png")` }} > </div>
@@ -54,7 +49,7 @@ export default function AboutUs() {
             </svg>
           </div>
         </div>
-        <div className="flex justify-center md:space-x-20">
+        <div className="flex justify-center flex-wrap md:space-x-20">
           <div className={`bg-white p-4 drop-shadow-md m-5 cursor-pointer ${certyNumber === 0 ? ' drop-shadow-2xl' : ''}`} onClick={() => setCertyNumber(0)}>
             <Image src={'/GPCB-Recognized.png'} alt="GPCB-Recognized" height={200} width={150} />
           </div>
@@ -63,6 +58,9 @@ export default function AboutUs() {
           </div>
           <div className={`bg-white p-4 py-10 drop-shadow-md m-5 cursor-pointer ${certyNumber === 2 ? ' drop-shadow-2xl' : ''}`} onClick={() => setCertyNumber(2)}>
             <Image src={'/iso_certy.png'} alt="iso-certificate" height={300} width={150} />
+          </div>
+          <div className="bg-white p-4 py-10 drop-shadow-xl m-5 cursor-pointer" >
+            <Image src={'/rspcblogo.jpeg'} alt="iso-certificate" height={300} width={150} />
           </div>
         </div>
       </div>

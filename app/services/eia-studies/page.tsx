@@ -1,13 +1,7 @@
-import Head from "next/head";
-
 export default function EIAStudies
 () {
   return (
     <div>
-      <Head>
-        <title>Enviro Culture | EIA Studies</title>
-        <meta name="description" content="We guide our clients to get legal approvals from the authorities that are responsible for levying restrictions and prohibitions to save the environment from pollutions toxic wastes."></meta>
-      </Head>
       <div className="bg-cover bg-center py-40 relative after:bg-[#1111114d] before:bg-opacity-50" style={{ backgroundImage: `url("/contact-banner.png")` }}>
         {/* <div className="bg-cover bg-center absolute top-0 left-0 z-10" style={{ backgroundImage: `url("/banner-overlay.png")` }}></div> */}
         <div className='absolute top-0 left-0 right-0 bottom-0 w-[100%] h-[100%] animate-service-banner bg-no-repeat bg-center' style={{ backgroundImage: `url("/banner-overlay.png")` }} > </div>
