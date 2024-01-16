@@ -156,7 +156,7 @@ export default function Home() {
             Certified Industrial Hygiene and safety
             </div>
             <p className="text-center">
-Industrial hygiene has been defined as “that science and art devoted to the anticipation, recognition, evaluation, and control of those environmental factors or stresses arising in or from the workplace, which may cause sickness, impaired health and well-being, or significant discomfort among workers"
+Industrial hygiene has been defined as &quot;that science and art devoted to the anticipation, recognition, evaluation, and control of those environmental factors or stresses arising in or from the workplace, which may cause sickness, impaired health and well-being, or significant discomfort among workers &quot;
             </p>
           </div>
           <div onClick={() => router.push('/services/epr')} className="w-full md:basis-[30%] shadow-lg group hover:shadow-xl m-5 flex flex-col items-center space-y-2 p-6 hover:cursor-pointer">
