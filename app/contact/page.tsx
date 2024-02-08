@@ -1,42 +1,89 @@
 "use client"
-
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import axios from "axios"
+interface ContactFormInput {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email: string;
+  description: string;
+}
+interface ErrorType{
+  email: string;
+  phone: string;
+  description: string
+}
 export default function ContactUs
   () {
-  const formSchema = z.object({
-    firstName: z.string().min(1, { message: "Name can not be Empty" }).max(50),
-    lastName: z.string().min(1, { message: "Name can not be Empty" }).max(50),
-    email: z.coerce.string().email({ message: "Enter valid Email" }).min(1, { message: "Email can not be Empty" }),
-    number: z.string().min(10, { message: "Enter Valid Number" }),
-    comment: z.string().max(100).min(1, { message: "Comment can not be Empty" })
-  })
+    const [formData, setFormData] = useState<ContactFormInput>({
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: '',
+      description: '',
+    });
+    const [errors, setErrors] = useState<ErrorType>();
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    };
+    const validate = () => {
+      let tempErrors = {
+        email: "",
+        phone: "",
+        description: ""
+      };
+      tempErrors.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) ? '' : 'Email is not valid.';
+      tempErrors.phone = /^[0-9]{10}$/.test(formData.phoneNumber) ? '' : 'Phone number is not valid.';
+      tempErrors.description = formData.description.length > 10 ? '' : 'Description must be at least 10 characters.';
+      setErrors(tempErrors);
+      return Object.values(tempErrors).every(x => x === "");
+    };
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if(!validate()){
+        return
+      }
+      console.log(formData);
+      // Here you would handle form submission, e.g., sending data to an API
+      axios.post('/api/send-mail',{
+        text: `
+          <h2> Message from User </h2>
+          <p>
+          <b>Client Name:</b > ${formData.firstName} ${formData.lastName}
+          </p>
+          <p>
+          <b>Contact No.:</b > ${formData.phoneNumber}
+          </p>
+          <p>
+          <b>Email:</b > ${formData.email}
+          </p>
+          <p>
+          <b>Message:</b > ${formData.description}
+          </p>
+        `
+      }).then(res => {
+        if(res.data === "Success"){
+          setFormData({
+            firstName: '',
+            lastName: '',
+            phoneNumber: '',
+            email: '',
+            description: '',
+          })
+          window.alert("We recieved your message. Team will reach you out soon!")
+        }
+        else{
+          window.alert("Something went wrong")
+        }
+      })
+      .catch(e => {
+        console.log(e)
+      })
+    };
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      number: "",
-      comment: "",
-    },
-  })
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-  }
 
   return (
     <div>
@@ -82,71 +129,45 @@ export default function ContactUs
 
       <div className=" my-20 flex flex-col space-y-3 md:flex-row w-full">
         <div className="md:basis-1/2 px-5 md:px-40">
-          <Form {...form} >
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-16 pt-10 flex flex-col ">
-              <FormField
-                control={form.control}
-                name="firstName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="First Name..." {...field} className=" shadow-xl border-t-0 border-l-0 border-r-0 focus:border-[#23ae51]"/>
-                    </FormControl>
-                    <FormMessage className=" text-red-700" />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="lastName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Last Name..." {...field} className=" shadow-xl border-t-0 border-l-0 border-r-0 focus:border-[#23ae51]"/>
-                    </FormControl>
-                    <FormMessage className=" text-red-700" />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Email..." {...field} className=" shadow-xl border-t-0 border-l-0 border-r-0 focus:border-[#23ae51]"/>
-                    </FormControl>
-                    <FormMessage className=" text-red-700" />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="number"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Contact Number..." {...field} className=" shadow-xl border-t-0 border-l-0 border-r-0 focus:border-[#23ae51]"/>
-                    </FormControl>
-                    <FormMessage className=" text-red-700" />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="comment"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Enter your comment..." className=" shadow-xl border-t-0 border-l-0 border-r-0 focus:border-[#23ae51]" {...field} />
-                    </FormControl>
-                    <FormMessage className=" text-red-700" />
-                  </FormItem>
-                )}
-              />
-              <Button className="bg-[#23ae51] rounded-full text-white hover:bg-[#23ae51d3]" type="submit">Submit</Button>
-            </form>
-          </Form>
+        <form onSubmit={handleSubmit} className="space-y-4 p-8 rounded-md shadow">
+      <div>
+        <label htmlFor="firstName" className="block text-sm font-medium text-green-700">First Name</label>
+        <input type="text" name="firstName" id="firstName" required
+               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+               onChange={handleChange} />
+      </div>
+      <div>
+        <label htmlFor="lastName" className="block text-sm font-medium text-green-700">Last Name</label>
+        <input type="text" name="lastName" id="lastName" required
+               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+               onChange={handleChange} />
+      </div>
+      <div>
+        <label htmlFor="phoneNumber" className="block text-sm font-medium text-green-700">Phone Number</label>
+        <input type="tel" name="phoneNumber" id="phoneNumber" required
+               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+               onChange={handleChange} />
+              {errors?.phone && <p style={{ color: 'red' }}>{errors.phone}</p>}
+      </div>
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium text-green-700">Email</label>
+        <input type="email" name="email" id="email" required
+               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+               onChange={handleChange} />
+              {errors?.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+
+      </div>
+      <div>
+        <label htmlFor="description" className="block text-sm font-medium text-green-700">Description</label>
+        <textarea name="description" id="description" required
+                  className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                  onChange={handleChange}></textarea>
+              {errors?.description && <p style={{ color: 'red' }}>{errors.description}</p>}
+      </div>
+      <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 cursor-pointer">
+        Contact Us
+      </button>
+    </form>
         </div>
         <div className="basis-1/2 flex justify-center">
         

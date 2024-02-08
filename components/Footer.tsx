@@ -19,6 +19,8 @@ const Footer = () => {
                         <span className='hover:text-[#23ae51] transition-colors duration-300 ease-in-out text-sm'>EIA Studies</span>
                         <span className='hover:text-[#23ae51] transition-colors duration-300 ease-in-out text-sm'>Waste Management</span>
                         <span className='hover:text-[#23ae51] transition-colors duration-300 ease-in-out text-sm'>Scrubber Designing and Solution</span>
+                        <span className='hover:text-[#23ae51] transition-colors duration-300 ease-in-out text-sm'>Certified Industrial Hygiene and safety</span>
+                        <span className='hover:text-[#23ae51] transition-colors duration-300 ease-in-out text-sm'>EPR</span>
                     </div>
                     <div className='flex flex-col space-y-3 flex-1'>
                         <span className='font-bold'>COMPANY</span>
