@@ -34,7 +34,8 @@ export  async function POST(req:NextRequest, res:NextResponse)  {
       // Send email using the transporter object
       let mailOptions = {
         from: '"Website Contact Form" enviroculture.in', // Sender address
-        to: ['info.enviroculture@gmail.com','lab.enviroculture@gmail.com'], // List of receivers
+        to: ['info.enviroculture@gmail.com','lab.enviroculture@gmail.com','sbhalani132@gmail.com'], // List of receivers
+        // to: ['sbhalani132@gmail.com'], // List of receivers
         subject: 'New Contact Form Submission on Enviroculture', // Subject line
         // text: text, // Plain text body
         html: JSON.parse(rawData).text, // Plain text body
