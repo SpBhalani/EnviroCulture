@@ -31,12 +31,14 @@ export  async function POST(req:NextRequest, res:NextResponse)  {
       // Send email using the transporter object
       let mailOptions = {
         from: 'smitb629@gmail.com', // Sender address
-        to: ['info.enviroculture@gmail.com','lab.enviroculture@gmail.com'], // List of receivers
+        to: ['info.enviroculture@gmail.com','lab.enviroculture@gmail.com','sbhalani132@gmail.com'], // List of receivers
         subject: 'New Contact Form Submission on Enviroculture', // Subject line
         html: JSON.parse(rawData).text, // Plain text body
       };
     
       transporter.sendMail(mailOptions, (error, info) => {
+        console.log("Error",error)
+        console.log("Info",info)
         if (error) {
             return new NextResponse(`Error sending email: ${error}`,{status: 400}) 
             
