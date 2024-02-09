@@ -134,26 +134,26 @@ export default function ContactUs
         <label htmlFor="firstName" className="block text-sm font-medium text-green-700">First Name</label>
         <input type="text" name="firstName" id="firstName" required
                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-               onChange={handleChange} />
+               onChange={handleChange} value={formData.firstName} />
       </div>
       <div>
         <label htmlFor="lastName" className="block text-sm font-medium text-green-700">Last Name</label>
         <input type="text" name="lastName" id="lastName" required
                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-               onChange={handleChange} />
+               onChange={handleChange} value={formData.lastName} />
       </div>
       <div>
         <label htmlFor="phoneNumber" className="block text-sm font-medium text-green-700">Phone Number</label>
         <input type="tel" name="phoneNumber" id="phoneNumber" required
                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-               onChange={handleChange} />
+               onChange={handleChange} value={formData.phoneNumber}/>
               {errors?.phone && <p style={{ color: 'red' }}>{errors.phone}</p>}
       </div>
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-green-700">Email</label>
         <input type="email" name="email" id="email" required
                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-               onChange={handleChange} />
+               onChange={handleChange} value={formData.email}/>
               {errors?.email && <p style={{ color: 'red' }}>{errors.email}</p>}
 
       </div>
@@ -161,7 +161,7 @@ export default function ContactUs
         <label htmlFor="description" className="block text-sm font-medium text-green-700">Description</label>
         <textarea name="description" id="description" required
                   className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-                  onChange={handleChange}></textarea>
+                  onChange={handleChange} value={formData.description}></textarea>
               {errors?.description && <p style={{ color: 'red' }}>{errors.description}</p>}
       </div>
       <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 cursor-pointer">

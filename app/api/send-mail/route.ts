@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer')
+import nodemailer from "nodemailer"
 import { NextApiRequest, NextApiResponse } from 'next';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -19,30 +19,24 @@ export  async function POST(req:NextRequest, res:NextResponse)  {
       rawData += new TextDecoder().decode(temp?.value);
     }
     // Create a transporter object using SMTP transport
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
+    let transporter = nodemailer.createTransport(
+      {
+      host: "smtp.gmail.com",
         auth: {
-          type: 'OAuth2',
-          user: 'smitb629@gmail.com', // Your Gmail address
-          clientId: process.env.CLIENTID,
-          clientSecret: process.env.CLIENTSECRET,
-          refreshToken: process.env.REFRESHTOKEN,
-          accessToken: process.env.ACCESSTOKEN,
+          user: "smitb629@gmail.com", // Your Gmail address
+          pass: process.env.PASSWORD?.replaceAll("-" , " ")
         },
-      });
-
+      }
+      );
       // Send email using the transporter object
       let mailOptions = {
-        from: '"Website Contact Form" enviroculture.in', // Sender address
-        to: ['info.enviroculture@gmail.com','lab.enviroculture@gmail.com','sbhalani132@gmail.com'], // List of receivers
-        // to: ['sbhalani132@gmail.com'], // List of receivers
+        from: 'smitb629@gmail.com', // Sender address
+        to: ['info.enviroculture@gmail.com','lab.enviroculture@gmail.com'], // List of receivers
         subject: 'New Contact Form Submission on Enviroculture', // Subject line
-        // text: text, // Plain text body
         html: JSON.parse(rawData).text, // Plain text body
-        // html: text, // HTML body
       };
     
-      transporter.sendMail(mailOptions, (error:any, info:any) => {
+      transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             return new NextResponse(`Error sending email: ${error}`,{status: 400}) 
             

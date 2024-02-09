@@ -1,10 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     env: {
-        CLIENTID: process.env.CLIENTID,
-        CLIENTSECRET: process.env.CLIENTSECRET,
-        REFRESHTOKEN: process.env.REFRESHTOKEN,
-        ACCESSTOKEN: process.env.ACCESSTOKEN
+        USER: process.env.USER,
+        PASSWORD: process.env.PASSWORD,
+
     }
 }
 
