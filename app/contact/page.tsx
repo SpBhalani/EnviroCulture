@@ -15,6 +15,7 @@ interface ErrorType{
 }
 export default function ContactUs
   () {
+    console.log("USER ",process.env.USER)
     const [formData, setFormData] = useState<ContactFormInput>({
       firstName: '',
       lastName: '',
