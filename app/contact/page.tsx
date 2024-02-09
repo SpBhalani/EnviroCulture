@@ -8,48 +8,49 @@ interface ContactFormInput {
   email: string;
   description: string;
 }
-interface ErrorType{
+interface ErrorType {
   email: string;
   phone: string;
   description: string
 }
 export default function ContactUs
   () {
-    console.log("USER ",process.env.USER)
-    const [formData, setFormData] = useState<ContactFormInput>({
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      email: '',
-      description: '',
+  const [formData, setFormData] = useState<ContactFormInput>({
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: '',
+    description: '',
+  });
+  const [errors, setErrors] = useState<ErrorType>();
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     });
-    const [errors, setErrors] = useState<ErrorType>();
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-      });
+  };
+  const validate = () => {
+    let tempErrors = {
+      email: "",
+      phone: "",
+      description: ""
     };
-    const validate = () => {
-      let tempErrors = {
-        email: "",
-        phone: "",
-        description: ""
-      };
-      tempErrors.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) ? '' : 'Email is not valid.';
-      tempErrors.phone = /^[0-9]{10}$/.test(formData.phoneNumber) ? '' : 'Phone number is not valid.';
-      tempErrors.description = formData.description.length > 10 ? '' : 'Description must be at least 10 characters.';
-      setErrors(tempErrors);
-      return Object.values(tempErrors).every(x => x === "");
-    };
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      if(!validate()){
-        return
-      }
-      console.log(formData);
-      // Here you would handle form submission, e.g., sending data to an API
-      axios.post('/api/send-mail',{
+    tempErrors.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) ? '' : 'Email is not valid.';
+    tempErrors.phone = /^[0-9]{10}$/.test(formData.phoneNumber) ? '' : 'Phone number is not valid.';
+    tempErrors.description = formData.description.length > 10 ? '' : 'Description must be at least 10 characters.';
+    setErrors(tempErrors);
+    return Object.values(tempErrors).every(x => x === "");
+  };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!validate()) {
+      return
+    }
+    // Here you would handle form submission, e.g., sending data to an API
+    setIsLoading(true)
+    try {
+      const res = await axios.post('/api/send-mail', {
         text: `
           <h2> Message from User </h2>
           <p>
@@ -65,25 +66,27 @@ export default function ContactUs
           <b>Message:</b > ${formData.description}
           </p>
         `
-      }).then(res => {
-        if(res.data === "Success"){
-          setFormData({
-            firstName: '',
-            lastName: '',
-            phoneNumber: '',
-            email: '',
-            description: '',
-          })
-          window.alert("We recieved your message. Team will reach you out soon!")
-        }
-        else{
-          window.alert("Something went wrong")
-        }
       })
-      .catch(e => {
-        console.log(e)
-      })
-    };
+      if (res.data === "Success") {
+        setFormData({
+          firstName: '',
+          lastName: '',
+          phoneNumber: '',
+          email: '',
+          description: '',
+        })
+        window.alert("We recieved your message. Team will reach you out soon!")
+      }
+      else {
+        console.log(res.data)
+        window.alert("Something went wrong")
+      }
+    }
+    catch (e) {
+      console.log(e)
+    }
+    setIsLoading(false)
+  };
 
 
   return (
@@ -130,49 +133,49 @@ export default function ContactUs
 
       <div className=" my-20 flex flex-col space-y-3 md:flex-row w-full">
         <div className="md:basis-1/2 px-5 md:px-40">
-        <form onSubmit={handleSubmit} className="space-y-4 p-8 rounded-md shadow">
-      <div>
-        <label htmlFor="firstName" className="block text-sm font-medium text-green-700">First Name</label>
-        <input type="text" name="firstName" id="firstName" required
-               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-               onChange={handleChange} value={formData.firstName} />
-      </div>
-      <div>
-        <label htmlFor="lastName" className="block text-sm font-medium text-green-700">Last Name</label>
-        <input type="text" name="lastName" id="lastName" required
-               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-               onChange={handleChange} value={formData.lastName} />
-      </div>
-      <div>
-        <label htmlFor="phoneNumber" className="block text-sm font-medium text-green-700">Phone Number</label>
-        <input type="tel" name="phoneNumber" id="phoneNumber" required
-               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-               onChange={handleChange} value={formData.phoneNumber}/>
+          <form onSubmit={handleSubmit} className="space-y-4 p-8 rounded-md shadow">
+            <div>
+              <label htmlFor="firstName" className="block text-sm font-medium text-green-700">First Name</label>
+              <input type="text" name="firstName" id="firstName" required
+                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                onChange={handleChange} value={formData.firstName} />
+            </div>
+            <div>
+              <label htmlFor="lastName" className="block text-sm font-medium text-green-700">Last Name</label>
+              <input type="text" name="lastName" id="lastName" required
+                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                onChange={handleChange} value={formData.lastName} />
+            </div>
+            <div>
+              <label htmlFor="phoneNumber" className="block text-sm font-medium text-green-700">Phone Number</label>
+              <input type="tel" name="phoneNumber" id="phoneNumber" required
+                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                onChange={handleChange} value={formData.phoneNumber} />
               {errors?.phone && <p style={{ color: 'red' }}>{errors.phone}</p>}
-      </div>
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-green-700">Email</label>
-        <input type="email" name="email" id="email" required
-               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-               onChange={handleChange} value={formData.email}/>
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-green-700">Email</label>
+              <input type="email" name="email" id="email" required
+                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                onChange={handleChange} value={formData.email} />
               {errors?.email && <p style={{ color: 'red' }}>{errors.email}</p>}
 
-      </div>
-      <div>
-        <label htmlFor="description" className="block text-sm font-medium text-green-700">Description</label>
-        <textarea name="description" id="description" required
-                  className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-                  onChange={handleChange} value={formData.description}></textarea>
+            </div>
+            <div>
+              <label htmlFor="description" className="block text-sm font-medium text-green-700">Description</label>
+              <textarea name="description" id="description" required
+                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                onChange={handleChange} value={formData.description}></textarea>
               {errors?.description && <p style={{ color: 'red' }}>{errors.description}</p>}
-      </div>
-      <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 cursor-pointer">
-        Contact Us
-      </button>
-    </form>
+            </div>
+            <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 cursor-pointer">
+              {isLoading ? "Sending..." : "Contact Us"}
+            </button>
+          </form>
         </div>
         <div className="basis-1/2 flex justify-center">
-        
-        <img className="p-4" src={"/contact-img.png"} alt="Contact Page Banner Image" />
+
+          <img className="p-4" src={"/contact-img.png"} alt="Contact Page Banner Image" />
         </div>
       </div>
 
@@ -221,7 +224,7 @@ export default function ContactUs
             lab.enviroculture@gmail.com</p>
         </div>
       </div>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d19238.345125617852!2d72.874737!3d21.200068!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fa379727861%3A0x7630343fc14d5ee9!2sEnviro%20Culture%20Pollution%20Control%20Consultant%20Services!5e1!3m2!1sen!2sin!4v1704201719896!5m2!1sen!2sin" className="w-full h-96 mb-5" allowFullScreen style={{border:0}}  loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d19238.345125617852!2d72.874737!3d21.200068!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fa379727861%3A0x7630343fc14d5ee9!2sEnviro%20Culture%20Pollution%20Control%20Consultant%20Services!5e1!3m2!1sen!2sin!4v1704201719896!5m2!1sen!2sin" className="w-full h-96 mb-5" allowFullScreen style={{ border: 0 }} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
       {/* <Map lat={0} lng={0}/> */}
     </div>
   );
