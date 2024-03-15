@@ -8,7 +8,7 @@ export default function EIAStudies
         <div className='absolute top-0 left-0 right-0 bottom-0 w-[100%] h-[100%] bg-black bg-opacity-20' > </div>
         {/* <div className='absolute top-0 left-0 right-0 bottom-0 w-[100%] h-[100%] bg-black bg-opacity-25'  > </div> */}
         <div className=' mx-1 md:mx-20 p-4'>
-          <p className='text-3xl font-bold text-center text-white'>EIA Studies</p>
+          <h1 className='text-3xl font-bold text-center text-white'>EIA Studies</h1>
           {/* <p className='text-xl font-light text-center text-white'>(As per Air Act:- 1981, Water Act: 1974 NOC, CC&A)</p> */}
         </div>
       </div>

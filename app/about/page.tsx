@@ -7,8 +7,8 @@ export default function AboutUs() {
         <div className='absolute top-0 left-0 right-0 bottom-0 w-[100%] h-[100%] bg-black bg-opacity-20' > </div>
         {/* <div className='absolute top-0 left-0 right-0 bottom-0 w-[100%] h-[100%] bg-black bg-opacity-25'  > </div> */}
         <div className=' mx-1 md:mx-20 p-4'>
-          <p className='text-3xl font-bold text-center text-white'>About Us</p>
-          <p className='text-xl font-light text-center text-white'>Get in Touch and let us know how can we help.</p>
+          <h1 className='text-3xl font-bold text-center text-white'>About Us</h1>
+          <h2 className='text-xl font-light text-center text-white'>Get in Touch and let us know how can we help.</h2>
         </div>
       </div>
       <div className="px-5 text-center md:px-10 py-20 -mt-5 flex flex-col justify-center bg-cover bg-no-repeat w-full text-white space-y-10 md:space-y-0" style={{ backgroundImage: `url('/bg-about-us.jpg')` }}>
